@@ -1,0 +1,46 @@
+h3  {
+  color: white;
+  text-transform: uppercase;
+}
+
+.app-wrapper  {
+  min-height: 70vh;
+
+  .breadcrumb {
+    .breadcrumb-item {
+      color: #ffffff;
+
+      a {
+        color: #ffffff;
+      }
+
+      &:before {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.footer {
+  bottom:0;
+  position: static;
+  width: 100%;
+  margin-top: 15px;
+    ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+      li {
+        padding: 0 15px;
+        line-height: 25px;
+        color: #ffffff;
+        img {
+          width: 30px;
+          float: right;
+        }
+      }
+    }
+}

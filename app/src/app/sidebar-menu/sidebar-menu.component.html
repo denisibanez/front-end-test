@@ -1,0 +1,37 @@
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let item of categorys">{{ item.name }}</li>
+  <li class="list-group-item">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryAdd">
+      Adicionar Categoria
+    </button>
+  </li>
+</ul>
+
+<div class="modal fade" id="categoryAdd" tabindex="-1" role="dialog" aria-labelledby="categoryAdd" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="categoryAddlabel">Adicionar categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="nameCategory">Nome da categoria</label>
+            <input type="text" class="form-control" id="nameCategory" aria-describedby="nameCategory">
+            <small id="nameCategory" class="form-text text-muted">Escreva o nome da categoria que deseja adicionar a lista</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+        <button type="button" class="btn btn-primary">Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

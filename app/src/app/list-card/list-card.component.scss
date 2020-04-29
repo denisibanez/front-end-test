@@ -1,0 +1,37 @@
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .card {
+    width: 18rem;
+    margin: 0 15px;
+
+    .card-body {
+      padding: 15px;
+      height: 50px;
+    }
+
+    .list-group-item {
+      display: flex;
+      
+      & div {
+        width: 50%;
+      }
+    }
+
+    .card-footer {
+      button {
+        float: right;
+      }
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .card-wrapper {
+    .card {
+      margin: 0;
+      width: 100%;
+    }
+  }
+} 

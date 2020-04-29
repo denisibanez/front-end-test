@@ -1,0 +1,19 @@
+.list-group-item {
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  &:last-child {
+    &:hover {
+      color: #fff;
+      background-color: #ffffff;
+      border-color: #ffffff;
+      cursor: auto;
+      border: 1px solid rgba(0,0,0,.125);
+    }
+  }
+}
