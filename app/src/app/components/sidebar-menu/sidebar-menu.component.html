@@ -1,7 +1,9 @@
 <ul class="list-group">
   <li
+    [class]="{'active' : selectItem.id === item.id }"
     class="list-group-item"
-    *ngFor="let item of categorys">{{ item.name }}</li>
+    *ngFor="let item of categories"
+    (click)="updateSelectCategory(item)">{{ item.name }}</li>
   <li class="list-group-item">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryAdd">
       Adicionar Categoria

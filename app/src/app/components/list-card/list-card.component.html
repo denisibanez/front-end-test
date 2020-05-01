@@ -1,35 +1,22 @@
 <div class="card-wrapper">
-  <div class="card mb-4" *ngFor="let list of lists">
-    <div class="card-body">
-      <h5 class="card-title">{{ list.name }}</h5>
+  <div *ngIf="selectCategory; else notLists">
+    <div *ngIf="!lists || !lists.length; else listsReturn">
+      <h5>Não existem listas para essa gategoria</h5>
     </div>
-    <ul class="list-group list-group-flush">
-      <li
-        class="list-group-item"
-        *ngFor="let item of items[list.id - 1]">
-        <div>{{ item.name }}</div>
-        <div class="custom-control custom-switch">
-          <input
-            type="checkbox"
-            class="custom-control-input"
-            [id]="'customSwitch' + item.id"
-            [checked]="item.done"
-            (input)="updateItemStatus({ item: item, list: list })">
-          <label class="custom-control-label" for="customSwitch1">Feito</label>
+
+    <ng-template #listsReturn>
+      <div class="card mb-4" *ngFor="let list of lists">
+        <div class="card-header">
+          <h5 class="card-title">{{ list.name }}</h5>
         </div>
-      </li>
-    </ul>
-    <div class="card-footer">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target="#itemAdd"
-        (click)="saveListSelect(list)">
-        Adicionar Item
-      </button>
-    </div>
+        <app-item [selectCategory]="selectCategory" [listId]="list.id"></app-item>
+      </div>
+    </ng-template>
   </div>
+
+  <ng-template #notLists>
+    <h5>Por favor, selecione uma categoria no menu.</h5>
+  </ng-template>
 </div>
 
 <div class="modal fade" id="itemAdd" tabindex="-1" role="dialog" aria-labelledby="itemAdd" aria-hidden="true">

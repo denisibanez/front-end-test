@@ -1,0 +1,31 @@
+<ul class="list-group list-group-flush" *ngIf="items.length; else notItems">
+  <li
+    class="list-group-item"
+    *ngFor="let item of items">
+    <div>{{ item.name }}</div>
+    <div class="custom-control custom-switch">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        [id]="'customSwitch' + item.id"
+        [checked]="item.done"
+        (input)="updateItemStatus('teste')">
+      <label class="custom-control-label" [for]="'customSwitch' + item.id">Feito</label>
+    </div>
+  </li>
+</ul>
+
+<ng-template #notItems>
+  <p>Não existe nenhum item nessa lista</p>
+</ng-template>
+
+<div class="card-footer">
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#itemAdd"
+    (click)="saveListSelect('teste')">
+    Adicionar Item
+  </button>
+</div>

@@ -1,0 +1,19 @@
+.list-group-item {
+  display: flex;
+  
+  & div {
+    width: 50%;
+  }
+}
+
+p{
+  padding: 15px;
+}
+
+.card-footer {
+  background-color: #ffffff;
+  button {
+    float: right;
+    margin: 15px;
+  }
+}

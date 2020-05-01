@@ -9,19 +9,8 @@
     .card-body {
       padding: 15px;
       height: 50px;
-    }
-
-    .list-group-item {
-      display: flex;
-      
-      & div {
-        width: 50%;
-      }
-    }
-
-    .card-footer {
-      button {
-        float: right;
+      .card-title {
+        text-transform: uppercase;
       }
     }
   }
