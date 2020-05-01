@@ -17,3 +17,13 @@ p{
     margin: 15px;
   }
 }
+
+@media(max-width: 767px) {
+    .card-footer {
+      .btn {
+        width: 100%;
+        margin: 0 auto;
+        float:none;
+      }
+    }
+  }

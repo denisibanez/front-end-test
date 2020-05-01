@@ -1,5 +1,5 @@
-<div class="card-wrapper">
-  <div *ngIf="selectCategory; else notLists">
+<div>
+  <div class="card-wrapper" *ngIf="selectCategory; else notLists">
     <div *ngIf="!lists || !lists.length; else listsReturn">
       <h5>Não existem listas para essa gategoria</h5>
     </div>

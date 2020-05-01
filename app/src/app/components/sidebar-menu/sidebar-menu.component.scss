@@ -18,3 +18,10 @@
     }
   }
 }
+
+@media(max-width: 767px) {
+    .btn {
+      width: 100%;
+      margin: 0 auto;
+    }
+}

@@ -44,3 +44,13 @@ h3  {
       }
     }
 }
+
+@media(max-width:767px) {
+  .jumbotron {
+    margin-top: 25px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

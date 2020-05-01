@@ -24,4 +24,8 @@ export class ItemsService {
     return this.http.post(`${this.baseUrl}/categories/${idcategory}/lists/${idList}/items/`, dados)
   }
 
+  ubpdateItems(idcategory:any, idList:any, dados: any) {
+    return this.http.put(`${this.baseUrl}/categories/${idcategory}/lists/${idList}/items/${dados.id}`, dados)
+  }
+
 }

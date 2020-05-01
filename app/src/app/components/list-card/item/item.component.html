@@ -9,7 +9,7 @@
         class="custom-control-input"
         [id]="'customSwitch' + item.id"
         [checked]="item.done"
-        (input)="updateItemStatus('teste')">
+        (input)="[item.done = !item.done, updateItemStatus(item)]">
       <label class="custom-control-label" [for]="'customSwitch' + item.id">Feito</label>
     </div>
   </li>
