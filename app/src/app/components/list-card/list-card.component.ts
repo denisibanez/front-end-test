@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-
 import { ListService } from 'src/app/services/list.service';
 
 import { CategoriesModel } from '../shared/categories.model';
@@ -11,10 +10,11 @@ import { ListModel } from '../shared/list.model'
   styleUrls: ['./list-card.component.scss'],
   providers: [ ListService ]
 })
+
 export class ListCardComponent implements OnInit {
   public lists: Array<ListModel>
-  public itemValue: string
-
+  public listId: number
+  public listValue: string = ''
   @Input() public selectCategory: CategoriesModel
 
   constructor(private listService: ListService) { }
@@ -24,6 +24,18 @@ export class ListCardComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+    this.getLists()
+  }
+
+  public listNameBind($event): void {
+    this.listValue = $event
+  }
+
+  public insertIdList($event): void {
+    this.listId = $event
+  }
+
+  public getLists(): void {
     if (this.selectCategory) {
       this.listService.getLists(this.selectCategory.id)
         .subscribe((response: Array<ListModel>) => {
@@ -32,11 +44,10 @@ export class ListCardComponent implements OnInit {
     }
   }
 
-  public updateItemValue($event) {
-    console.log($event)
-  }
-
-  public inputItemList() {
-
+  public inputList(): void {
+    const data = { id: this.lists.length + 1, name: this.listValue}
+    this.listService.postLists(this.selectCategory.id, data).subscribe(() => {
+      this.getLists()
+    })
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { ItemModel } from '../../shared/item.model';
-import { CategoriesModel } from '../../shared/categories.model';
 
 @Component({
   selector: 'app-item',
@@ -10,43 +9,42 @@ import { CategoriesModel } from '../../shared/categories.model';
   providers: [ ItemsService ]
 })
 export class ItemComponent implements OnInit {
-  public listSelect = ''
-  public oldValue
   public items: Array<ItemModel> = []
-
-  @Input() public selectCategory: CategoriesModel
-  @Input() public listId: number
-  
+  public itemValue: string = ''
+  @Input() public list
+  @Input() public listId
+    
   constructor(private itemsService: ItemsService) { }
 
   ngOnInit(): void {
   }
 
   ngOnChanges(): void {
-    this.oldValue
-    const changeList = (this.listId !==  this.oldValue &&  this.oldValue !== '')
-    if(changeList) {
-      if (this.selectCategory && this.listId) {
-        this.itemsService.getItems(this.selectCategory.id, this.listId)
-          .subscribe((response: Array<ItemModel>) => {
-            this.items = response
-        })
-      }
-    }
-
-    this.oldValue = this.listId
+    this.getItens()
   }
 
-  public updateItemStatus($event) {
-    this.itemsService.ubpdateItems(this.selectCategory.id, this.listId, $event)
-      .subscribe((response: Array<ItemModel>) => {
-        // console.log('res', response)
+  public getItens(): void {
+    if(this.list) {
+      this.itemsService.getItems(this.list.categoryId, this.list.id)
+        .subscribe((response: Array<ItemModel>) => {
+          this.items = response
+      })
+    }
+  }
+
+  public updateItemStatus($event): void{
+    this.itemsService.ubpdateItems(this.list.categoryId, $event.listId, $event)
+    .subscribe()
+  }
+
+  public updateItemValue($event):void {
+    this.itemValue = $event
+  }
+
+  public insertItem(): void {
+    const data = { id: this.items.length + 1, name: this.itemValue, done: false}
+    this.itemsService.postItems(this.list.categoryId, this.listId, data).subscribe(() => {
+      this.getItens()
     })
   }
-
-  public saveListSelect($event): void {
-    console.log($event)
-    this.listSelect = $event
-  }
-
 }

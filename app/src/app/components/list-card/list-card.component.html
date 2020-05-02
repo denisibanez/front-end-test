@@ -7,10 +7,30 @@
     <ng-template #listsReturn>
       <div class="card mb-4" *ngFor="let list of lists">
         <div class="card-header">
-          <h5 class="card-title">{{ list.name }}</h5>
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="card-title">{{ list.name }}</h5>
+            </div>
+            <div class="col-md-12">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#itemAdd"
+                (click)="insertIdList(list.id)">
+                Adicionar Item
+              </button>
+            </div>
+          </div>
+          
         </div>
-        <app-item [selectCategory]="selectCategory" [listId]="list.id"></app-item>
-      </div>
+
+        <app-item
+          [list]="list"
+          [listId]="listId"
+          [selectCategory]="selectCategory">
+        </app-item>
+      </div>  
     </ng-template>
   </div>
 
@@ -19,11 +39,11 @@
   </ng-template>
 </div>
 
-<div class="modal fade" id="itemAdd" tabindex="-1" role="dialog" aria-labelledby="itemAdd" aria-hidden="true">
+<div class="modal fade" id="listAdd" tabindex="-1" role="dialog" aria-labelledby="listAdd" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="itemAddlabel">Adicione um item a lista</h5>
+        <h5 class="modal-title" id="listAdd">Adicione uma lista na categoria </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -31,14 +51,14 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="nameItem">Nome do item</label>
-            <input 
-              type="text"
-              class="form-control"
-              id="nameItem"
-              aria-describedby="nameItem"
-              (input)="updateItemValue($event.target.value)">
-            <small id="nameItem" class="form-text text-muted">Escreva o nome do item que deseja adicionar a lista</small>
+            <label for="nameList">Nome da lista</label>
+            <input
+            type="text"
+            class="form-control"
+            id="nameList"
+            aria-describedby="nameList"
+            (input)="listNameBind($event.target.value)">
+            <small id="nameList" class="form-text text-muted">Escreva o nome da lista que deseja adicionar a categoria</small>
           </div>
         </form>
       </div>
@@ -47,10 +67,11 @@
         <button
           type="button"
           class="btn btn-primary"
-          (click)="inputItemList()">
+          (click)="inputList()">
             Salvar
         </button>
       </div>
     </div>
   </div>
 </div>
+

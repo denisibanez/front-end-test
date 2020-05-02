@@ -17,10 +17,6 @@ export class ListService {
     return this.http.get(`${this.baseUrl}/categories/${idCategory}/lists`)
   }
 
-  getListsById(idCategory:any, idList:any) {
-    return this.http.get(`${this.baseUrl}/categories/${idCategory}/lists/${idList}`)
-  }
-
   postLists(idCategory:any, dados: any) {
     return this.http.post(`${this.baseUrl}/categories/${idCategory}/lists`, dados)
   }

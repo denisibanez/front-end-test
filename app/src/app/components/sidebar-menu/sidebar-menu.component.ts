@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 
 import { CategoriesModel } from '../shared/categories.model';
-import { rejects } from 'assert';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -12,9 +11,9 @@ import { rejects } from 'assert';
 })
 export class SidebarMenuComponent implements OnInit {
   public categories: Array<CategoriesModel>
-  public selectItem: CategoriesModel = { id: undefined, name: undefined }
   public categoryInsertValue: string = ''
-
+  public selectItem: CategoriesModel = { id: undefined, name: undefined }
+  
   @Output() eventClicked = new EventEmitter<Event>();
 
   constructor(private categoriesService: CategoriesService) { }
@@ -45,4 +44,5 @@ export class SidebarMenuComponent implements OnInit {
       this.getCategories()
     })
   }
+
 }
