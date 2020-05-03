@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { HomeComponent } from './views/home/home.component';
-import { ItemComponent } from './components/list-card/item/item.component';
 import { NotFoundComponent } from './views/notfound/notfound.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { NotFoundComponent } from './views/notfound/notfound.component';
     SidebarMenuComponent,
     ListCardComponent,
     HomeComponent,
-    ItemComponent,
     NotFoundComponent
   ],
   imports: [

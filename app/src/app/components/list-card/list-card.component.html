@@ -11,24 +11,44 @@
             <div class="col-md-12">
               <h5 class="card-title">{{ list.name }}</h5>
             </div>
-            <div class="col-md-12">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#itemAdd"
-                (click)="insertIdList(list.id)">
-                Adicionar Item
-              </button>
-            </div>
           </div>
-          
-        </div>
+        </div>    
+       
+        <div class="card-body">
+          <ul class="list-group list-group-flush" *ngIf="list.items.length; else notItems">
+            <li
+              class="list-group-item"
+              *ngFor="let item of list.items">
+              <div>{{ item.name }}</div>
+              <div class="custom-control custom-switch">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  [id]="'customSwitch' + item.id"
+                  [checked]="item.done"
+                  (input)="[item.done = !item.done, updateItemStatus(item)]">
+                <label class="custom-control-label" [for]="'customSwitch' + item.id">Feito</label>
+              </div>
+            </li>
+          </ul>
 
-        <app-item
-          [list]="list"
-          [listId]="listId">
-        </app-item>
+          <ng-template #notItems>
+            <p>Não existe nenhum item nessa lista</p>
+          </ng-template>
+        </div>  
+
+        <div class="card-footer">
+          <div class="col-md-12">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#itemAdd"
+              (click)="insertIdList(list)">
+              Adicionar Item
+            </button>
+          </div>         
+        </div>    
       </div>  
     </ng-template>
   </div>
@@ -74,3 +94,39 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="itemAdd" tabindex="-1" role="dialog" aria-labelledby="itemAdd" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="itemAddlabel">Adicione um item a lista</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="nameItem">Nome do item</label>
+            <input 
+              type="text"
+              class="form-control"
+              id="nameItem"
+              aria-describedby="nameItem"
+              (input)="updateItemValue($event.target.value)">
+            <small id="nameITemLabel" class="form-text text-muted">Escreva o nome do item que deseja adicionar a lista</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button
+          (click)="insertItem()"
+          type="button"
+          class="btn btn-primary">
+            Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

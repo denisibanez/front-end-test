@@ -7,10 +7,29 @@
     margin: 0 15px;
 
     .card-body {
-      padding: 15px;
-      height: 50px;
+       padding: 0;
       .card-title {
         text-transform: uppercase;
+      }
+
+      .list-group-item {
+        display: flex;
+        
+        & div {
+          width: 50%;
+        }
+      }
+      
+      p{
+        padding: 15px;
+      }
+    }
+
+    .card-footer {
+      background-color: #ffffff;
+      button {
+        float: right;
+        margin: 15px;
       }
     }
   }
@@ -21,6 +40,14 @@
     .card {
       margin: 0;
       width: 100%;
+
+      .card-footer {
+        .btn {
+          width: 100%;
+          margin: 0 auto;
+          float:none;
+        }
+      }
     }
   }
 } 
