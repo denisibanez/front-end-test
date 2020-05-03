@@ -72,7 +72,7 @@ export class ListCardComponent implements OnInit {
   }
 
   public updateItemStatus($event): void{
-    this.itemsService.ubpdateItems(this.list.categoryId, $event.listId, $event)
+    this.itemsService.ubpdateItems(this.selectCategory.id, $event.listId, $event)
     .subscribe()
   }
 

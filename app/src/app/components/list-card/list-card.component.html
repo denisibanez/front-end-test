@@ -14,8 +14,8 @@
           </div>
         </div>    
        
-        <div class="card-body">
-          <ul class="list-group list-group-flush" *ngIf="list.items.length; else notItems">
+        <div class="card-body" *ngIf="list.items">
+          <ul class="list-group list-group-flush" *ngIf="list.items; else notItems">
             <li
               class="list-group-item"
               *ngFor="let item of list.items">
